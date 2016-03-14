@@ -169,8 +169,11 @@ def historian(config_path, **kwargs):
                                                                  headers=headers,
                                                                  message=payload['message']).get()
                     except gevent.Timeout:
-                        pass
+#                         pass
+                        _log.warn("********Setting historian back up*****")
+                        self.historian_setup()
                     except Exception as e:
+                        
                         _log.error(e)
                     else:
                         handled_records.append(x)
