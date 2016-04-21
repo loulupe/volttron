@@ -15,7 +15,8 @@ command:
 .. code-block:: bash
 
    sudo apt-get update
-   sudo apt-get install build-essential python-dev openssl libssl-dev libevent-dev git
+   sudo apt-get install build-essential python-dev openssl libssl-dev libevent-dev git 
+  
 
 On **Arch Linux**, the following command will install the dependencies:
 
@@ -43,8 +44,8 @@ git command.
 Bootstrap
 ---------
 
-To create a development environment, execute the following in the project root
-directory.
+To create a development environment, execute only once the following in the project root
+directory (eg. ~/VOLTTRON $).
 
 .. code-block:: bash
 
@@ -75,7 +76,7 @@ execute the following:
 .. code-block:: bash
 
     python bootstrap.py --testing
-
+or  sudo apt-get install python-pytest
 
 To run all of the tests in the volttron repository execute the following in the
 root directory using an activated command prompt:
