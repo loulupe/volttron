@@ -1,0 +1,3 @@
+Point Name,Volttron Point Name,Units,Units Details,Writable,Starting Value,Type,Notes
+Heartbeat,Heartbeat,On/Off,On/Off,TRUE,0,boolean,Point for heartbeat toggle
+IsMotionDetect,IsMotionDetect,True/False,True/False,FALSE,0,boolean,Point for finding motion detection

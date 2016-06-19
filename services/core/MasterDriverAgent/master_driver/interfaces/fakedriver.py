@@ -158,7 +158,7 @@ class Interface(BasicRevert, BaseInterface):
                 reg_type,
                 default_value=default_value,
                 description=description)
-            
+            print (register) 
             if default_value is not None:
                 self.set_default(point_name, register.value)
 

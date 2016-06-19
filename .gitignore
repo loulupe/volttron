@@ -1,3 +1,4 @@
+*.log
 .*.sw?
 *.py[co]
 *.egg-info

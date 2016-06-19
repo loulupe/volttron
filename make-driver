@@ -1,0 +1,4 @@
+export SOURCE=services/core/MasterDriverAgent
+export CONFIG=/home/priyankkapadia/summer/project/volttron/services/core/MasterDriverAgent/master_driver/interfaces/fake-drive.lg
+export TAG=fakedriver
+/home/priyankkapadia/summer/project/volttron/scripts/core/make-agent.sh
