@@ -59,8 +59,10 @@ class Interface(BaseInterface):
         result = {}
         read_registers = self.get_registers_by_type("byte", True)
         write_registers = self.get_registers_by_type("byte", False)
+        sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
         for register in read_registers + write_registers:
-            result[register.point_name] = register.value
+            sock.sendto(register.point_name + '\n',(self.target_address,self.target_port))
+            result[register.point_name] = sock.recv(255)
         return result
     
     def revert_all(self, **kwargs):
