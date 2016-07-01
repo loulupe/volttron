@@ -31,6 +31,7 @@ class GPIORegister(BaseRegister):
     def __init__(self, read_only, pointName, device_point_name, units,reg_type ,default_value,description):
         '''Initialize register with read_only,pointName, device_point_name, units and default_value '''
         '''Point Name,Volttron Point Name,Units,Units Details,Writable,Starting Value,Type,Notes'''
+        #this extracts register points/data from the csv file
         super(GPIORegister, self).__init__("byte", read_only, pointName, units, default_value)
         self.default_value = default_value
         self.device_point_name = device_point_name
