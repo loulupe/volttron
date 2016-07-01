@@ -7,10 +7,11 @@
 #and NSF-I-Corps - Rochester Institute of Technology.
 #None of the team members, entities that had collaborated or funded to this project has legal liability 
 #or responsibility for any outcome
-#The views and opinions of any team member or collaborator do not reflect those of any agencyentity.
+#The views and opinions of any team member or collaborator do not reflect those of any agency.
 #_Project Team: Lourdes Gutierrez and Priyank Kapadia
 #_Contact info: lmg4630@rit.edu, plk8075@rit.edu
 #_Created: 2016-06-19
+
 
 import socket
 import sys
