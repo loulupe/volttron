@@ -1,0 +1,45 @@
+#This code has been developed for the 1st PNNL Connected Building Challenge
+#by the team "Ventilation Scheduler"
+#All our development is based on opensource contributions
+#It is intended to be distributed for the building automation communities for research and educational purposes
+#Copyrights and license is to be determined
+#This work is being funded by the Department of Energy Program - BIRD Building Integration Research and Developed Innovators Program
+#and NSF-I-Corps - Rochester Institute of Technology.
+#None of the team members, entities that had collaborated or funded this development has legal liability or responsibility for any type of outcome
+#The views and opinions of any team member or collaborator do not reflect those of any agencyentity.
+#_Project Team: Lourdes Gutierrez and Priyank Kapadia
+#_Contact info: lmg4630@rit.edu, plk8075@rit.edu
+#_Created: 2016-06-19
+#_Updated: 2016-06-30
+'''
+
+import SocketServer
+import RPi.GPIO as GPIO
+import time
+
+RESPONSE_DATA1="MOTION DETECTED"
+RESPONSE_DATA2="NO MOTION"
+RESPONSE_DATA3="BAD REQUEST"
+VALID_REQUESTS=["IsMotionDetected"]
+SENSOR=4
+
+class MyUDPHandler(SocketServer.BaseRequestHandler):
+    def handle(self):
+        socket=self.request[1]
+        data=self.request[0].strip()
+        print "{}wrote:{}".format(self.client_addres[0],data)
+        GPIO.setmode(GPIO.BCM)
+        GPIO.setup(SENSOR,GPIO.IN)
+        if data in VALID_REQUESTS:
+            if GPIO.input(SENSOR):
+                socket.sendto('True',self.client_address)
+            else:
+                socket.sendto('False',self.client_address)
+        else:
+            socket.sendto(RESPONSE_DATA3,self.client_address)
+if __name__=="__main__":
+    HOST,PORT= "192.168.1.2",9999 
+    #change the IP address, look on the terminal for your IP address by typing ifconfig
+    #choose your port it can be any number from 0 to 9999
+    server=SocketServer.UDPServer((HOST,PORT),MyUDPHandler)
+    server.serve_forever()
