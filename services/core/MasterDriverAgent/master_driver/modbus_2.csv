@@ -1,0 +1,14 @@
+Point Name,Volttron Point Name,Units,Units Details,Writable,Starting Value,Type,Notes
+temperature,temperature,F,(-)39.99 to 248.00,FALSE,0,int,Temperature for modbus
+heat_setpoint,heat_setpoint,F,(-)39.99 to 248.00,TRUE,0,int,Point for finding motion detection
+supply_temperature,supply_temperature,F,,FALSE,0,int, RTU supply temperature (floating point in deg F)
+return_temperature            ,return_temperature            ,F,,FALSE,0,int,RTU supply temperature (floating point in deg F)
+flap_override,flap_override,ON/OFF,,TRUE,0,bool,flap override('ON'/'OFF')
+flap_position   ,flap_position   ,%,,TRUE,0,int,"flap position, int"
+outside_temperature      ,outside_temperature      ,F,,FALSE,0,int,outside temperature from RTU sensor (floating point in deg F)
+pressure,pressure,F,,TRUE,0,int,
+outside_damper_position,outside_damper_position,%,,TRUE,0,int,"outside damper position, int"
+bypass_damper_position,bypass_damper_position,%,,TRUE,0,int,"outside damper position, int"
+fan_status,fan_status,ON/OFF,,TRUE,0,bool,RTU fan status('ON'/'OFF')
+cooling_status,cooling_status,ON/OFF,,TRUE,0,bool,RTU cooling status('ON'/'OFF')
+cooling_mode,cooling_mode,,,TRUE,0,int,RTU cooling mode('None'/'STG1'/'STG2')
