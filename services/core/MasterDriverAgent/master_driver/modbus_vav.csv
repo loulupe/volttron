@@ -1,0 +1,3 @@
+Reference Point Name,Volttron Point Name,Units,Min,Max,Modbus Register,Point Address,Default Value without Multiplier,Multiplier,Default Value,Focus Screen,Writable,Notes
+Damper State,DamperState,%,,,>f,5,,1,,,TRUE,0=OK / 1=STALLED / 2=REINITIALIZING
+Damper Position,DamperPosition,%,,,>f,6,,1,,,TRUE,111% when performing damper reinitilisation

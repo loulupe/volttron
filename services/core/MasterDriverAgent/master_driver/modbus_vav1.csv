@@ -1,0 +1,2 @@
+Reference Point Name,Volttron Point Name,Units,Unit Details,Writable,Modbus Register,Point Address,Index,Default Value ,Notes
+Damper Position,Damper Position,0,0.00 - 100.00,TRUE,>l,6,1,111,Damper Position
