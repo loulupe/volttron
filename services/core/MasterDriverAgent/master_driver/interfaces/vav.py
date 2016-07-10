@@ -17,7 +17,7 @@ class VAVRegister(BaseRegister):
     def __init__(self, read_only, pointName, device_point_name, units,reg_type ,default_value,description):
         '''Initialize register with read_only,pointName, device_point_name, units and default_value '''
         '''Point Name,Volttron Point Name,Units,Units Details,Writable,Starting Value,Type,Notes'''
-        super(VAVRegister, self).__init__("byte", read_only, pointName, units, default_value)
+        super(VAVRegister, self).__init__('byte', read_only, pointName, units, default_value)
         self.default_value = default_value
         self.device_point_name = device_point_name
         self.value = False
@@ -44,8 +44,9 @@ class Interface(BaseInterface):
     
     def set_point(self, point_name, value):
         _log.info('set point called')
-        _log.info('POINT_NAME:')
+        _log.info('POINT_NAME:'+str(point_name))
         register = self.get_register_by_name(point_name)
+        _log.info("get register by name")
         Prolon = API(model='VC1000', type='VAV', api='API', address=self.target_address+":"+self.slave_id)
         if Prolon.setDeviceStatus({point_name:value}):
             return Prolon.get_variable(point_name)
@@ -75,10 +76,10 @@ class Interface(BaseInterface):
             return 
         f = StringIO(config_string)
         configDict = DictReader(f)
-        
         for regDef in configDict:
             read_only = regDef['Writable'].lower() != 'true'
             point_name = regDef['Volttron Point Name']
+            _log.info(str(point_name))
             device_pointName = regDef['Point Name']
             description = regDef.get('Notes', '')  
             units = regDef['Units']
@@ -86,8 +87,12 @@ class Interface(BaseInterface):
             if not default_value:
                 default_value = None
             type_name = regDef.get("Type", 'string')
+            _log.info('<====='+type_name+'======>')
             reg_type = type_mapping.get(type_name, str)
+            _log.info('Getting type')
             register_type = VAVRegister
+            _log.info('constructor before')
+            _log.info('READ ONLY:'+str(read_only) +',POINT_NAME:'+ str(point_name) + ',DEVICE_POINTNAME:' + str(device_pointName) + ',UNITS:' + str(units) + ',REG_TYPE:' + str(reg_type) + ',DEFAULT:' + str(default_value) + ',DESCRIPTION:' + str(description))
             register = register_type(
                 read_only,
                 point_name,
@@ -96,7 +101,8 @@ class Interface(BaseInterface):
                 reg_type,
                 default_value=default_value,
                 description=description)
-            #print(register)
+            _log.info("INSERTING")
             self.insert_register(register)
+            _log.info("INSERTED REGISTER")
 
 
