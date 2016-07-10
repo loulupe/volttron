@@ -10,8 +10,10 @@ import random
 
 utils.setup_logging()
 _log = logging.getLogger(__name__)
-topic = 'devices/motiondetect_device/IsMotionDetect'
-topic2 = 'campus/building/modbus1/flap_override'
+topic = 'campus/building/bacnet1/dmpr_pos_1'
+topic2 = 'campus/building/modbus/flap_override'
+topic3 = 'campus/building/modbus/flap_position'
+
 PLATFORM_ACTUATOR = 'platform.actuator'
 PLATFORM_BACNET = 'platform.bacnet_proxy'
 REQUEST_NEW_SCHEDULE = 'request_new_schedule'
@@ -26,11 +28,14 @@ class TestAgent(Agent):
         taskid = str(random.random())
         start = str(datetime.now())
         end = str(datetime.now() + timedelta(seconds=10))
-        msg = [['campus/building/modbus1/flap_override', start, end]]
+        msg = [['campus/building/modbus', start, end]]
         result = self.vip.rpc.call(PLATFORM_ACTUATOR,REQUEST_NEW_SCHEDULE,agent_id,taskid,'HIGH',msg).get(timeout=10)
-        _log.info('Agent Status:'+str(result ))
-        result = self.vip.rpc.call(PLATFORM_ACTUATOR,'get_point',topic2).get(timeout=10)
+        _log.info('Agent Status:'+str(result))
+        result = self.vip.rpc.call(PLATFORM_ACTUATOR,'set_point',agent_id,topic2,'ON').get(timeout=10)
+        result = self.vip.rpc.call(PLATFORM_ACTUATOR,'set_point',agent_id,topic3,10).get(timeout=10)
         _log.info('RESULT:'+str(result))
+        _log.info('RESULT:'+str(result))
+
 
 
 

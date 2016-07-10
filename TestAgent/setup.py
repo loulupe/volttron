@@ -6,7 +6,7 @@ package = packages[0]
 setup(
       name = package + 'agent',
       version = "0.1",
-      install_requires = ['voltron'],
+      install_requires = ['volttron'],
       packages = packages,
       entry_points = {
            'setuptools.installation':[
