@@ -1,0 +1,35 @@
+ def DataListener(self):
+        print self.path
+        with ClassData(litePath = self.path) as self.data:   
+            schedules = self.data.getAllActiveSchedules()
+            if (len(schedules) > 0):
+                count = 0
+                for schedule in schedules:
+                    if (count != 0):
+                        agent_id = 'testagent'
+                        taskid = schedule.facility + "_" +schedule.VAV
+                        start = schedule.start
+                        _log.info("START:"+ str(schedule.start))
+                        end = schedule.end
+                        _log.info("END:"+str(schedule.end))
+                        msg = [['campus/building/modbus', str(start), str(end)]]
+                        result = self.vip.rpc.call(PLATFORM_ACTUATOR,REQUEST_NEW_SCHEDULE,agent_id,taskid,'HIGH',msg).get(timeout=10)
+                        _log.info(result)
+                    count = count + 1'''
+
+  def testListener(self):
+        agent_id = 'testagent'
+        headers = {
+                'AgentID': agent_id,
+                'type': 'NEW_SCHEDULE',
+                'requesterID': agent_id, #The name of the requesting agent.
+                'taskID': agent_id + "-ExampleTask", #The desired task ID for this task. It must be unique among all other scheduled tasks.
+                'priority': 'HIGH', #The desired task priority, must be 'HIGH', 'LOW', or 'LOW_PREEMPT'
+                }
+        taskid = str(random.random())
+        start = str(datetime.now())
+        end = str(datetime.now() + timedelta(seconds=10))
+        msg = [['campus/building/modbus', start, end]]
+        self.vip.pubsub.publish(
+                    'pubsub', topics.ACTUATOR_SCHEDULE_REQUEST, headers, msg)
+
