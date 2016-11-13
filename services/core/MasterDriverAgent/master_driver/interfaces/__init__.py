@@ -301,6 +301,7 @@ class BaseInterface(object):
         :rtype: :py:class:`BaseRegister`
         """
         try:
+            print(self.point_map)
             return self.point_map[name]
         except KeyError:
             raise DriverInterfaceError("Point not configured on device: "+name)
@@ -334,11 +335,15 @@ class BaseInterface(object):
         :param register: Register to add to the interface.
         :type register: :py:class:`BaseRegister`
         """
+        _log.info("1st instruction set")
         register_point = register.point_name
+        _log.info("2nd instruction set")
         self.point_map[register_point] = register
-        
+        _log.info("3rd instruction set")
         register_type = register.get_register_type()
-        self.registers[register_type].append(register)        
+        _log.info("4th instruction set")
+        self.registers[register_type].append(register)
+        _log.info("++++++++++++++END++++++++++++")
         
     @abc.abstractmethod
     def get_point(self, point_name, **kwargs):    

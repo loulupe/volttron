@@ -1,4 +1,7 @@
 {
     "agentid": "master_driver",
-    "driver_config_list": ["/home/priyankkapadia/summer/project/volttron/services/core/MasterDriverAgent/master_driver/motiondetect.config"]
+    "driver_config_list": [
+"/home/priyankkapadia/summer/project/volttron/services/core/MasterDriverAgent/master_driver/test_modbus1.config",
+"/home/priyankkapadia/summer/project/volttron/services/core/MasterDriverAgent/master_driver/motiondetect.config"
+]
 }

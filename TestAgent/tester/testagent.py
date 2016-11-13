@@ -33,7 +33,7 @@ class TestAgent(Agent):
         super(TestAgent,self).__init__(**kwargs)
         self.path = os.path.join(SQLITE_PATH,DATABASE)
 
-    @Core.periodic(60)
+    @Core.periodic(10)
     def DataListener(self):
         print self.path
         with ClassData(litePath = self.path) as self.data:
@@ -70,15 +70,14 @@ class TestAgent(Agent):
                 if (len(self.schedules)) > 0:
                     self.data.updateBatchStatus('2')
     
-    @PubSub.subscribe('pubsub',topics.ACTUATOR_SCHEDULE_ANNOUNCE(campus='campus',
-        building='building',unit='modbus'))
+    @PubSub.subscribe('pubsub',topics.ACTUATOR_SCHEDULE_ANNOUNCE(campus='campus',building='building',unit='modbus'))
     def runOnScheduleself(self, peer, sender, bus,  topic, headers, message):
+        _log.info("############################This event triggered on#################" + str(datetime.now()))
         agent_id = headers['requesterID']
         key = headers['taskID']
         self.schedules = pickle.load( open( SQLITE_PATH+"/save.p", "rb" ) )
         _log.info(str(self.path))
         data = self.schedules[key]
-        _log.info("############################This event triggered on#################" + str(datetime.now()))
         Position = int(data['pos'])
         _log.info('Position:'+str(Position))
         Default = int(data['default'])
@@ -96,14 +95,19 @@ class TestAgent(Agent):
                     'campus/motiondetect_device/IsMotionDetect'  # point
                     ).get(timeout=10)
             _log.info("MOTION DETECT RESULT:"+str(result))
+            _log.info("#############RESULT EXIT########"+str(result=='True'))
             time.sleep(2)
             _log.info("CURRENT TIME:"+str(time.time()))
-            if result == 'True' or time.time() > gracePeriod:
+            if (str(result) == 'True') or (time.time() > gracePeriod):
+                _log.info("##############################TIMEOUT/MOTION_DETECTED############################")
                 break
-        if result == 'True':
+        if (str(result) == 'True'):
+            _log.info("#####################################MOTION DETECTED#######################")
             SetPosition = Position
         else:
+            _log.info("##############################DEFAULT IDLE##################################")
             SetPosition = Default
+        _log.info("###################################SETTING POSITION############################"+str(SetPosition))
         result = self.vip.rpc.call(PLATFORM_ACTUATOR,'set_point',agent_id,topic2,'ON').get(timeout=10)
         result = self.vip.rpc.call(PLATFORM_ACTUATOR,'set_point',agent_id,topic3,SetPosition).get(timeout=10)
         print 'Done with Commands - Release device lock.'
@@ -112,6 +116,7 @@ class TestAgent(Agent):
                 'requesterID': agent_id,
                 'taskID': key
                 }
+        _log.info("####### WORK DONE. CANCE TASK NOW !!! ###############")
         self.vip.pubsub.publish('pubsub',topics.ACTUATOR_SCHEDULE_REQUEST,headers,{})
         
 

@@ -1,0 +1,79 @@
+Reference Point Name,Volttron Point Name,Units,Unit Details,BACnet Object Type,Property,Writable,Index,Write Priority,Notes
+Calendar_1,Calendar_1,Boolean,,calendar,presentValue,FALSE,1,,
+Calendar_2,Calendar_2,Boolean,,calendar,presentValue,FALSE,2,,
+Calendar_3,Calendar_3,Boolean,,calendar,presentValue,FALSE,3,,
+Calendar_4,Calendar_4,Boolean,,calendar,presentValue,FALSE,4,,
+Calendar_5,Calendar_5,Boolean,,calendar,presentValue,FALSE,5,,
+Module Halted Alarm,Module Halted Alarm,Enum,0-1,binaryValue,presentValue,FALSE,4000000,,See modstat. Restart control module then download.
+All Programs Stopped Alarm,All Programs Stopped Alarm,Enum,0-1,binaryValue,presentValue,FALSE,4000001,,See modstat. Fix programs/properties and download.
+Duplicate Address Alarm,Duplicate Address Alarm,Enum,0-1,binaryValue,presentValue,FALSE,4000002,,See modstat for duplicate ARCNET address.
+Locked I/O Alarm,Locked I/O Alarm,Enum,0-1,binaryValue,presentValue,FALSE,4000003,,"Points locked in this module's program_x, where x="
+Control Program Alarm,Control Program Alarm,Enum,0-1,binaryValue,presentValue,FALSE,4000004,,See modstat for details.
+Program Stopped Alarm,Program Stopped Alarm,Enum,0-1,binaryValue,presentValue,FALSE,4000005,,See modstat. Fix program/properties then download.
+Excessive COV Alarm,Excessive COV Alarm,Enum,0-1,binaryValue,presentValue,FALSE,4000006,,Excessive COV Subscription updates detected.
+Flow Control Alarm,Flow Control Alarm,Enum,0-1,binaryValue,presentValue,FALSE,4001000,,Flow control devices have errors.
+zone_co2_1,zone_co2_1,partsPerMillion,0.00 to 1000.00,analogInput,presentValue,FALSE,6,,Zone CO2
+co2_stpt_1,co2_stpt_1,partsPerMillion,(default 750.0),analogValue,presentValue,FALSE,14,,Maximum CO2 Level
+min_cfm_1,min_cfm_1,cubicFeetPerMinute,(default 25.0),analogValue,presentValue,FALSE,16,,Minimum Airflow
+ht_dat_lim_diff_1,ht_dat_lim_diff_1,degreesFahrenheit,(default 20.0),analogValue,presentValue,FALSE,9,,Discharge Air Temperature Heat Limit
+da_temp_1,da_temp_1,degreesFahrenheit,0.00 to 120.00,analogInput,presentValue,FALSE,3,,Discharge Air Temperature
+zone_rh_1,zone_rh_1,percentRelativeHumidity,0.00 to 100.00,analogInput,presentValue,FALSE,7,,Zone Relative Humidity
+metric_conv_1,metric_conv_1,noUnits,(default 32.0),analogValue,presentValue,FALSE,15,,Metric Conversion
+ei_weight_1,ei_weight_1,noUnits,(default 1.0),analogValue,presentValue,FALSE,10,,Zone Environmental Index Weighting Factor
+occ_1,occ_1,minutes,0.00 to 90.00,analogInput,presentValue,FALSE,8,,Motion detector
+occ_sens_raw_1,occ_sens_raw_1,Enum,0-1,binaryInput,presentValue,FALSE,1,,"BinaryPV: 0=inactive, 1=active"
+occ_enable_1,occ_enable_1,hours,(default 24.0),analogValue,presentValue,FALSE,17,,Occupancy sensor enable hours
+ai_01_1,ai_01_1,degreesFahrenheit,45.00 to 96.00,analogInput,presentValue,FALSE,4,,Spare Analog Input 01
+bi_01_1,bi_01_1,Enum,0-1,binaryInput,presentValue,FALSE,2,,Spare Binary Input 01
+ai_02_1,ai_02_1,degreesFahrenheit,45.00 to 96.00,analogInput,presentValue,FALSE,5,,Spare Analog Input 02
+bi_02_1,bi_02_1,Enum,0-1,binaryInput,presentValue,FALSE,3,,Spare Binary Input 02
+item_count_1,item_count_1,noUnits,,analogValue,presentValue,FALSE,11,,Environmental Index Count
+av_01_1,av_01_1,noUnits,,analogValue,presentValue,FALSE,20,,Spare Analog Value 01
+av_02_1,av_02_1,noUnits,,analogValue,presentValue,FALSE,21,,Spare Analog Value 02
+bv_01_1,bv_01_1,Enum,0-1,binaryValue,presentValue,FALSE,9,,Spare Binary Value 01
+bv_02_1,bv_02_1,Enum,0-1,binaryValue,presentValue,FALSE,10,,Spare Binary Value 02
+ao_01_1,ao_01_1,percent,0.00 to 10.00 (default 0.0),analogOutput,presentValue,FALSE,3,,Spare Analog Output 01
+bo_01_1,bo_01_1,Enum,0-1 (default 0),binaryOutput,presentValue,FALSE,1,,Spare Binary Output 01
+run_1,run_1,Enum,0-1,binaryValue,presentValue,FALSE,7,,Run
+ztmp_hi_1,ztmp_hi_1,Enum,0-1,binaryValue,presentValue,FALSE,19,,High Zone Temp
+ztmp_lo_1,ztmp_lo_1,Enum,0-1,binaryValue,presentValue,FALSE,20,,Low Zone Temp
+zco2_hi_1,zco2_hi_1,Enum,0-1,binaryValue,presentValue,FALSE,16,,High Zone CO2
+occ_status_1,occ_status_1,Enum,0-1,binaryValue,presentValue,FALSE,5,,Occupancy
+total_weight_1,total_weight_1,noUnits,,analogValue,presentValue,FALSE,23,,Zone Environmental Index Total Weight
+active_zones_1,active_zones_1,noUnits,,analogValue,presentValue,FALSE,2,,Environmental Index Active Zone
+vav_heat_mode_1,vav_heat_mode_1,Enum,0-1,binaryValue,presentValue,FALSE,12,,"BinaryPV: 0=inactive, 1=active"
+ahu_heat_mode_1,ahu_heat_mode_1,Enum,0-1,binaryValue,presentValue,FALSE,1,,Air Handling Unit Heat Mode
+heat_mode_1,heat_mode_1,Enum,0-1,binaryValue,presentValue,FALSE,3,,Heat Mode
+zn_enviro_indx_1,zn_enviro_indx_1,percent,,analogValue,presentValue,FALSE,24,,Zone Environmental Index
+zn_ei_time_sat_1,zn_ei_time_sat_1,percent,,analogValue,presentValue,FALSE,22,,Zone Environmental Index Time Satisfied
+enviro_windx_1,enviro_windx_1,noUnits,,analogValue,presentValue,FALSE,27,,Zone Weighted Environmental Index
+flow_1,flow_1,cubicFeetPerMinute,,analogValue,presentValue,FALSE,3,,Airflow
+zrh_hi_1,zrh_hi_1,Enum,0-1,binaryValue,presentValue,FALSE,17,,High Zone Relative Humidity
+zrh_lo_1,zrh_lo_1,Enum,0-1,binaryValue,presentValue,FALSE,18,,Low Zone Relative Humidity
+zpz_1,zpz_1,noUnits,,analogValue,presentValue,FALSE,25,,Zone Outdoor Airflow Fraction Required
+zpz_out_1,zpz_out_1,noUnits,,analogValue,presentValue,FALSE,26,,Zone Outdoor Airflow Fraction Required
+dat_hi_1,dat_hi_1,Enum,0-1,binaryValue,presentValue,FALSE,13,,High Discharge Air Temp
+dat_lo_1,dat_lo_1,Enum,0-1,binaryValue,presentValue,FALSE,14,,Low Discharge Air Temp
+hw_valve_1,hw_valve_1,percent,0.00 to 100.00 (default 0.0),analogOutput,presentValue,FALSE,1,,Hot Water Valve
+hw_valve_fp_1,hw_valve_fp_1,percent,0.00 to 100.00 (default 0.0),analogOutput,presentValue,FALSE,4,,Reheat Hot Water Valve Floating Point
+heat_request_1,heat_request_1,noUnits,,analogValue,presentValue,FALSE,13,,
+occ_sensor_status_1,occ_sensor_status_1,Enum,0-1,binaryValue,presentValue,FALSE,4,,"BinaryPV: 0=inactive, 1=active"
+occ_error_1,occ_error_1,Enum,0-1,binaryValue,presentValue,FALSE,15,,Occupancy Sensor Error
+override_1,override_1,minutes,,analogValue,presentValue,FALSE,18,,
+schedule_1,schedule_1,Enum,0-1 (default 0),binaryValue,presentValue,FALSE,8,,"BinaryPV: 0=inactive, 1=active"
+vacant_1,vacant_1,Enum,0-1,binaryValue,presentValue,FALSE,11,,"BinaryPV: 0=inactive, 1=active"
+ovrd_1,ovrd_1,Enum,0-1,binaryValue,presentValue,FALSE,6,,Override
+ht_run_for_1,ht_run_for_1,noUnits,,analogValue,presentValue,FALSE,12,,
+cl_run_for_1,cl_run_for_1,noUnits,,analogValue,presentValue,FALSE,6,,
+sp_adjust_1,sp_adjust_1,noUnits,,analogValue,presentValue,FALSE,19,,
+zone_temp_1,zone_temp_1,degreesFahrenheit,45.00 to 96.00,analogInput,presentValue,FALSE,2,,Zone Temperature
+override_time_remaining_1,override_time_remaining_1,minutes,,analogValue,presentValue,FALSE,1,,Zone Override Time Remaining
+dem_vent_1,dem_vent_1,Enum,0-1,binaryValue,presentValue,FALSE,2,,"BinaryPV: 0=inactive, 1=active"
+phw_valve_1,phw_valve_1,percent,0.00 to 100.00 (default 0.0),analogOutput,presentValue,FALSE,2,,Perimeter Hot Water Valve
+phw_valve_fp_1,phw_valve_fp_1,percent,0.00 to 100.00 (default 0.0),analogOutput,presentValue,FALSE,5,,Perimeter Hot Water Valve Floating Point
+phw_valve_pwm_1,phw_valve_pwm_1,percent,0.00 to 100.00 (default 0.0),analogOutput,presentValue,FALSE,6,,Perimeter Hot Water Valve
+flow_input_1,flow_input_1,cubicFeetPerMinute,45.00 to 96.00,analogInput,presentValue,FALSE,1,,Actual Flow
+flow_sp_1,flow_sp_1,cubicFeetPerMinute,,analogValue,presentValue,FALSE,5,,Airflow Setpoint
+dmpr_pos_1,dmpr_pos_1,UNKNOWN UNIT ENUM VALUE: 4109,,analogValue,presentValue,FALSE,8,,Damper Position
+cool_request_1,cool_request_1,noUnits,,analogValue,presentValue,FALSE,7,,
+air_request_1,air_request_1,noUnits,,analogValue,presentValue,FALSE,4,,Airflow Request for Static Reset

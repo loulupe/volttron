@@ -1022,8 +1022,10 @@ class ActuatorAgent(Agent):
             try:
                 if len(message) == 1:
                     requests = message[0]
+                    _log.info(message[0])
                 else:
                     requests = message
+                    _log.info(str(message))
 
                 self.request_new_schedule(requester_id, task_id, priority, requests)
             except StandardError as ex:
@@ -1070,11 +1072,15 @@ class ActuatorAgent(Agent):
         topic = topics.ACTUATOR_SCHEDULE_RESULT()
         headers = self._get_headers(requester_id, task_id=task_id)
         headers['type'] = SCHEDULE_ACTION_NEW
-
+        _log.info("REached first point")
+        _log.info(str(requests[0]))
         try:
             if requests and isinstance(requests[0], basestring):
                 requests = [requests]
+                _log.info("reached second point")
+            _log.info("REQUESTS:"+str(requests))
             requests = [[r[0].strip('/'),utils.parse_timestamp_string(r[1]),utils.parse_timestamp_string(r[2])] for r in requests]
+            _log.info("Reached third point")
 
         except StandardError as ex:
             return self._handle_unknown_schedule_error(ex, headers, requests)

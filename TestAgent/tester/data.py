@@ -17,6 +17,7 @@ class ClassData(object):
         _log.info(litePath)
         if litePath is not None:
             con = sqlite3.connect(litePath)
+            self.con = con
             self.cur = con.cursor()
         if self._schedules is None:
             self._schedules = {}
@@ -52,6 +53,7 @@ class ClassData(object):
                     if dateRange is not None:
                         posData = self.getDamperPos(row)
                         _log.info(str(dateRange))
+                        _log.info("#####################ROWID:############"+str(row[0]))
                         classdata = {
                                 'rowid': row[0],
                                 'start': str(dateRange[0]),
@@ -109,11 +111,14 @@ class ClassData(object):
 
     
     def updateBatchStatus(self,Status):
-        self.cur.execute("UPDATE scheduler_airflow SET status=" +str(Status))
+        _log.info("####################UPDATING BATCH STATUS#####################")
+        self.cur.execute("""UPDATE scheduler_airflow SET status = ?""",(Status,))
+        self.con.commit()
 
     def updateStatus(self,Status,schedule,table):
         _log.info("#####################UPDATING STATUS###########################"+str(schedule['rowid']))
-        self.cur.execute("UPDATE scheduler_" +table+ " SET status=" +str(Status)+" WHERE id = " + str(schedule['rowid']))
+        self.cur.execute("""UPDATE scheduler_registration SET status=? WHERE id =?""",(Status,schedule['rowid']))
+        self.con.commit()
 
     def getDamperPos(self,row):
         _log.info('Facl ID:'+str(row[11]))

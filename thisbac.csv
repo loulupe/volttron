@@ -1,0 +1,14 @@
+Reference Point Name,Volttron Point Name,Units,Unit Details,BACnet Object Type,Property,Writable,Index,Write Priority,Notes
+Calendar_1,Calendar_1,Boolean,,calendar,presentValue,FALSE,1,,
+Calendar_2,Calendar_2,Boolean,,calendar,presentValue,FALSE,2,,
+Calendar_3,Calendar_3,Boolean,,calendar,presentValue,FALSE,3,,
+Calendar_4,Calendar_4,Boolean,,calendar,presentValue,FALSE,4,,
+Calendar_5,Calendar_5,Boolean,,calendar,presentValue,FALSE,5,,
+Module Halted Alarm,Module Halted Alarm,Enum,0-1,binaryValue,presentValue,FALSE,4000000,,See modstat. Restart control module then download.
+All Programs Stopped Alarm,All Programs Stopped Alarm,Enum,0-1,binaryValue,presentValue,FALSE,4000001,,See modstat. Fix programs/properties and download.
+Duplicate Address Alarm,Duplicate Address Alarm,Enum,0-1,binaryValue,presentValue,FALSE,4000002,,See modstat for duplicate ARCNET address.
+Locked I/O Alarm,Locked I/O Alarm,Enum,0-1,binaryValue,presentValue,FALSE,4000003,,"Points locked in this module's program_x, where x="
+Control Program Alarm,Control Program Alarm,Enum,0-1,binaryValue,presentValue,FALSE,4000004,,See modstat for details.
+Program Stopped Alarm,Program Stopped Alarm,Enum,0-1,binaryValue,presentValue,FALSE,4000005,,See modstat. Fix program/properties then download.
+Excessive COV Alarm,Excessive COV Alarm,Enum,0-1,binaryValue,presentValue,FALSE,4000006,,Excessive COV Subscription updates detected.
+Dead Module Timeout Alarm,Dead Module Timeout Alarm,Enum,0-1,binaryValue,presentValue,FALSE,4001000,,"DEV:x (Device ID) is not responding, where x="

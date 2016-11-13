@@ -72,6 +72,7 @@ class Register(BaseRegister):
                  priority = None,
                  list_index = None):
         super(Register, self).__init__("byte", read_only, pointName, units, description = '')
+        _log.info('Reached init' + pointName)
         self.instance_number = int(instance_number)
         self.object_type = object_type
         self.property = property_name
@@ -131,6 +132,7 @@ class Interface(BaseInterface):
         point_map = {point_name:[register.object_type, 
                                  register.instance_number, 
                                  my_property]}
+        _log.info("++++++++++++++++++++++++REACHED TO INTERFACE+++++++++++++++++++++++++++")
         result = self.vip.rpc.call(self.proxy_address, 'read_properties', 
                                        self.target_address, point_map).get(timeout=10.0)
         return result[point_name]
